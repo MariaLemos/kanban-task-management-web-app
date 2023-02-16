@@ -2,20 +2,44 @@ import styled from "styled-components";
 
 export const Input: React.FC<
   {
-    errorMessage?: string;
     label: string;
+    className?: string;
+    errorMessage?: string;
+    onClick?: (event: any) => void;
+    icon?: JSX.Element;
   } & Partial<HTMLInputElement>
-> = ({ label, errorMessage, placeholder }) => {
+> = ({
+  label,
+  errorMessage,
+  placeholder,
+  onClick,
+  className,
+  value,
+  readOnly,
+  icon,
+}) => {
   return (
-    <StyledLabel>
+    <StyledLabel className={className} onClick={onClick}>
       {label}
       <InputWrapper hasError={Boolean(errorMessage)}>
-        <StyledInput placeholder={placeholder} />
+        <StyledInput
+          placeholder={placeholder}
+          value={value}
+          readOnly={readOnly}
+        />
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+        {icon && (
+          <Icon onClick={(event) => event.stopPropagation()}>{icon}</Icon>
+        )}
       </InputWrapper>
     </StyledLabel>
   );
 };
+const Icon = styled.span`
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+`;
 const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.red};
   flex-shrink: 0;
@@ -48,6 +72,7 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 0.5rem 1rem;
   outline: none;
+  line-height: 23px;
 
   &:not(:active, :focus) {
     mix-blend-mode: normal;

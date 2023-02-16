@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { Button } from "./commons/button";
+import { DropDown } from "./commons/dropdown";
 import { Input } from "./commons/input";
 import GlobalStyle, { SchemeColors } from "./GlobalStyles";
 import { themeMap } from "./Themes";
@@ -31,6 +32,7 @@ function App() {
             placeholder="type a things"
             errorMessage="cant be empty"
           />
+          <DropDown label={"status"} optionNames={["doing", "todo"]} />
         </Main>
       </ThemeProvider>
     </div>

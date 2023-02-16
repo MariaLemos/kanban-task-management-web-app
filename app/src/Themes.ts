@@ -1,6 +1,10 @@
 import { SchemeColors } from "./GlobalStyles";
 
 const lightTheme: Theme = {
+  dropdown: {
+    bg: SchemeColors.white,
+  },
+
   input: {
     bg: SchemeColors.white,
     fontColor: SchemeColors.black,
@@ -24,6 +28,9 @@ const lightTheme: Theme = {
   },
 };
 const darkTheme: Theme = {
+  dropdown: {
+    bg: SchemeColors.darkBg,
+  },
   input: {
     bg: SchemeColors.darkGrey,
     fontColor: SchemeColors.white,
