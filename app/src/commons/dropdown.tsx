@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Input } from "./input";
 import { ReactComponent as ArrowSvg } from "../assets/icon-chevron-down.svg";
 export const DropDown: React.FC<
@@ -17,10 +17,11 @@ export const DropDown: React.FC<
       <StyledInput
         value={selectedValue}
         label={label}
-        onClick={() => {
-          console.log("click");
-          setShowOptions(!showOptions);
+        isOpen={showOptions}
+        onFocus={() => {
+          setShowOptions(true);
         }}
+        onClick={() => setShowOptions(!showOptions)}
         icon={<ArrowSvg />}
         readOnly
       />
@@ -29,7 +30,9 @@ export const DropDown: React.FC<
         <DropdownWrapper>
           {optionNames.map((optionName) => (
             <Option
-              onClick={() => {
+              key={optionName}
+              onClick={(event) => {
+                event.stopPropagation();
                 setSelectedValue(optionName);
                 setShowOptions(false);
               }}
@@ -47,25 +50,36 @@ const StyledDropdown = styled.div`
   font-size: 13px;
   line-height: 23px;
 `;
-const StyledInput = styled(Input)`
+const StyledInput = styled(Input)<{ isOpen: boolean }>`
   transition: 0.5s;
+
   input {
     user-select: none;
+    cursor: pointer;
   }
-  > div {
-    border: 1px solid rgba(130, 143, 163, 0.25);
-    border-color: ${({ theme }) => theme.mainPurple};
-  }
+  ${({ isOpen }) =>
+    isOpen
+      ? css`
+          > div {
+            border: 1px solid rgba(130, 143, 163, 0.25);
+            border-color: ${({ theme }) => theme.mainPurple};
+          }
+        `
+      : ""}
 `;
 const DropdownWrapper = styled.div`
   display: block;
-  background-color: ${({ theme }) => theme.dropdown.bg};
+  background-color: ${({ theme }) => theme.default.bg};
 
   width: 100%;
 `;
-const Option = styled.span`
+const Option = styled.button`
   display: block;
   padding: 0.5rem 1rem;
   width: 100%;
   cursor: pointer;
+  background-color: ${({ theme }) => theme.default.bg};
+  color: ${({ theme }) => theme.mediumGrey};
+  border: none;
+  text-align: left;
 `;

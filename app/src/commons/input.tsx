@@ -6,6 +6,8 @@ export const Input: React.FC<
     className?: string;
     errorMessage?: string;
     onClick?: (event: any) => void;
+    onFocus?: (event: any) => void;
+    onBlur?: (event: any) => void;
     icon?: JSX.Element;
   } & Partial<HTMLInputElement>
 > = ({
@@ -13,6 +15,8 @@ export const Input: React.FC<
   errorMessage,
   placeholder,
   onClick,
+  onFocus,
+  onBlur,
   className,
   value,
   readOnly,
@@ -26,6 +30,8 @@ export const Input: React.FC<
           placeholder={placeholder}
           value={value}
           readOnly={readOnly}
+          onFocus={onFocus}
+          onBlur={onBlur}
         />
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         {icon && (
@@ -35,17 +41,15 @@ export const Input: React.FC<
     </StyledLabel>
   );
 };
-const Icon = styled.span`
-  flex-shrink: 0;
-  padding: 0.5rem 1rem;
-  flex-shrink: 0;
+
+const StyledLabel = styled.label`
+  display: block;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: ${({ theme }) => theme.input.fontColor};
 `;
-const ErrorMessage = styled.span`
-  color: ${({ theme }) => theme.red};
-  flex-shrink: 0;
-  text-align: right;
-  padding: 0.5rem 1rem;
-`;
+
 const InputWrapper = styled.div<{ hasError: boolean }>`
   background: ${({ theme }) => theme.input.bg};
 
@@ -57,13 +61,9 @@ const InputWrapper = styled.div<{ hasError: boolean }>`
   display: flex;
   font-size: 13px;
   line-height: 23px;
-`;
-const StyledLabel = styled.label`
-  display: block;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  color: ${({ theme }) => theme.input.fontColor};
+  &:has(input:focus) {
+    outline: 2px solid ${({ theme }) => theme.mainPurple};
+  }
 `;
 const StyledInput = styled.input`
   background: ${({ theme }) => theme.input.bg};
@@ -78,4 +78,15 @@ const StyledInput = styled.input`
     mix-blend-mode: normal;
     opacity: 0.25;
   }
+`;
+const Icon = styled.span`
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+`;
+const ErrorMessage = styled.span`
+  color: ${({ theme }) => theme.red};
+  flex-shrink: 0;
+  text-align: right;
+  padding: 0.5rem 1rem;
 `;
