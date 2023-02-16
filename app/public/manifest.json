@@ -1,0 +1,25 @@
+{
+  "short_name": "Kanban App",
+  "name": "Kanban task management web app",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "logo-dark.svg",
+      "type": "image/svg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo-mobile.svg",
+      "type": "image/svg",
+      "sizes": "24x24"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
