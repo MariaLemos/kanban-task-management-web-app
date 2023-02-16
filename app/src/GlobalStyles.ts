@@ -12,6 +12,7 @@ export const SchemeColors = {
   red: "#EA5555",
   redHover: "#FF9898",
   white: "#fff",
+  mainPurpleWithTransaprency: " rgba(99, 95, 199, 0.75)",
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -33,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
     box-sizing:border-box;
-
+    transition:all 0.2s;
 }
 body{
     font-family: 'Plus Jakarta Sans';

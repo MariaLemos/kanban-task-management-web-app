@@ -1,7 +1,7 @@
 import { SchemeColors } from "./GlobalStyles";
 
 const lightTheme: Theme = {
-  dropdown: {
+  default: {
     bg: SchemeColors.white,
   },
 
@@ -28,7 +28,7 @@ const lightTheme: Theme = {
   },
 };
 const darkTheme: Theme = {
-  dropdown: {
+  default: {
     bg: SchemeColors.darkBg,
   },
   input: {

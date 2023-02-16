@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { Button } from "./commons/button";
+import { CheckListItem } from "./commons/checkListItem";
 import { DropDown } from "./commons/dropdown";
 import { Input } from "./commons/input";
 import GlobalStyle, { SchemeColors } from "./GlobalStyles";
@@ -33,6 +34,7 @@ function App() {
             errorMessage="cant be empty"
           />
           <DropDown label={"status"} optionNames={["doing", "todo"]} />
+          <CheckListItem isDone={true} label={"teste"} />
         </Main>
       </ThemeProvider>
     </div>
