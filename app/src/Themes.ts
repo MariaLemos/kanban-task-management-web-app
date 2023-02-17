@@ -4,6 +4,7 @@ import { ReactComponent as LogoDark } from "./assets/logo-dark.svg";
 
 const lightTheme: Theme = {
   logo: LogoDark,
+  line: SchemeColors.lightLines,
   default: {
     bg: SchemeColors.white,
     fontColor: SchemeColors.black,
@@ -40,9 +41,10 @@ const lightTheme: Theme = {
 };
 const darkTheme: Theme = {
   logo: LogoLight,
+  line: SchemeColors.darkLines,
   main: {
     bg: SchemeColors.darkBg,
-    fontColor: SchemeColors.white,
+    fontColor: SchemeColors.mediumGrey,
   },
   default: {
     bg: SchemeColors.darkBg,

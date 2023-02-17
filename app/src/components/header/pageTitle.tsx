@@ -25,6 +25,7 @@ export const PageTitle: React.FC = () => {
 
 const StyledPageTitle = styled.div`
   background-color: transparent;
+  color: ${({ theme }) => theme.aside.fontColor};
   cursor: pointer;
   display: flex;
   align-items: center;

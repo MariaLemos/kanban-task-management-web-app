@@ -48,7 +48,6 @@ const Menu = styled.ul`
 `;
 const MenuOption = styled.li`
   padding: 1rem;
-  color: ${({ theme }) => theme.mediumGrey};
 `;
 const DeleteOption = styled(MenuOption)`
   color: ${({ theme }) => theme.red};

@@ -2,6 +2,7 @@ type ButtonType = "primary" | "secondary" | "destructive";
 type ThemedComponents = "main" | "input" | "default" | "input" | "aside";
 type Theme = { [key in ThemedComponents]: ThemedComponentProps } & {
   logo: ReactComponent;
+  line: string;
   buttons: {
     [key in ButtonType]: ThemedComponentProps;
   };

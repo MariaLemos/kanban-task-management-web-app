@@ -8,12 +8,10 @@ import { PageTitle } from "./pageTitle";
 
 export const Header: React.FC = () => {
   const isMobile = useIsMobile();
-  const theme = useTheme() as Theme;
-  const Logo = theme.logo;
 
   return (
     <StyledHeader>
-      {isMobile ? <LogoMobile /> : <Logo />}
+      {isMobile && <LogoMobile />}
 
       <PageTitle />
       <StyledButton variant="primary" size="small">
@@ -32,12 +30,13 @@ const StyledHeader = styled.header`
   padding: 1.33rem;
   background-color: ${({ theme }) => theme.aside.bg};
 
+  width: 100%;
   display: grid;
   grid-gap: 1.3rem;
   align-items: center;
   grid-template-columns: 2rem 1fr 4rem 1rem;
   @media (min-width: 768px) {
-    grid-template-columns: 11rem 1fr 4rem 1rem;
+    grid-template-columns: 1fr 4rem 1rem;
   }
   @media (min-width: 1000px) {
     padding: 1.5rem;

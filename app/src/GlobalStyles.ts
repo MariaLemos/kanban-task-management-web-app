@@ -70,6 +70,11 @@ h4{
         line-height: 15px;
     }
 }
+button{
+    background-color:transparent ;
+    border:none;
+  color:inherit;
+}
 
 `;
 
