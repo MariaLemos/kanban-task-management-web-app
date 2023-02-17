@@ -8,3 +8,4 @@ type Theme = { [key in ThemedComponents]: ThemedComponentProps } & {
 };
 
 type ThemedComponentProps = { bg?: string; fontColor?: string; hover?: string };
+type ThemeName = "light" | "dark";

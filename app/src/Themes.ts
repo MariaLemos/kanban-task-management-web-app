@@ -3,9 +3,10 @@ import { ReactComponent as LogoLight } from "./assets/logo-light.svg";
 import { ReactComponent as LogoDark } from "./assets/logo-dark.svg";
 
 const lightTheme: Theme = {
-  logo: LogoLight,
+  logo: LogoDark,
   default: {
     bg: SchemeColors.white,
+    fontColor: SchemeColors.black,
   },
   main: {
     bg: SchemeColors.lightBg,
@@ -34,7 +35,7 @@ const lightTheme: Theme = {
   },
 };
 const darkTheme: Theme = {
-  logo: LogoDark,
+  logo: LogoLight,
   main: {
     bg: SchemeColors.darkBg,
     fontColor: SchemeColors.white,

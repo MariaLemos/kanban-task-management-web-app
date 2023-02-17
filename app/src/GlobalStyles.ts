@@ -25,28 +25,34 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     transition:all 0.2s;
 }
-body{
+html{
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
-
+    @media (max-width:768px){
+    font-size: 12px;}
+    @media (min-width:768px){
+    font-size: 14px;
+    }
+    @media (min-width:1000px){
+    font-size: 16px;
+    }
 }
 // headers tipografia
 h1,h2,h3,h4{
     font-weight: 700;
-    
     line-height:1.25;
 }
  h1{
-    font-size: 24px;
+    font-size: 2rem;
 }
 h2{
-    font-size: 18px;
+    font-size: 1.5rem;
 }
 h3{
-    font-size: 15px;
+    font-size: 1rem;
 }
 h4{
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: 2.4px;
     color: ${SchemeColors.mediumGrey}
 }
