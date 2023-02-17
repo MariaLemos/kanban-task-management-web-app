@@ -14,10 +14,10 @@ const contextDefaultValues: AppContextType = {
 };
 export const AppContext = createContext<AppContextType>(contextDefaultValues);
 
-export const useThemeName = () => [
-  useContext(AppContext).themeName,
-  useContext(AppContext).setThemeName,
-];
+export const useThemeName = () => {
+  const { themeName, setThemeName } = useContext(AppContext);
+  return { themeName, setThemeName };
+};
 
 export const useShowSideBar = () => {
   const { showSideBar, setShowSideBar } = useContext(AppContext);

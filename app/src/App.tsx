@@ -31,7 +31,7 @@ function App() {
             errorMessage="cant be empty"
           />
           <DropDown label={"status"} optionNames={["doing", "todo"]} />
-          <CheckListItem isDone={true} label={"teste"} />
+          <CheckListItem isDone={true} label={"teste"} onChange={() => {}} />
         </Main>
       </AppWrapper>
     </AppProvider>
@@ -45,6 +45,6 @@ const Main = styled.main`
   height: 100vh;
   width: 100%;
   padding: 5%;
-  background-color: ${({ theme }) => theme.default.bg};
+  background-color: ${({ theme }) => theme.main.bg};
 `;
 export default App;

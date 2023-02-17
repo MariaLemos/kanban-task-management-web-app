@@ -12,6 +12,10 @@ const lightTheme: Theme = {
     bg: SchemeColors.lightBg,
     fontColor: SchemeColors.darkGrey,
   },
+  aside: {
+    bg: SchemeColors.white,
+    fontColor: SchemeColors.black,
+  },
   input: {
     bg: SchemeColors.white,
     fontColor: SchemeColors.black,
@@ -42,6 +46,10 @@ const darkTheme: Theme = {
   },
   default: {
     bg: SchemeColors.darkBg,
+  },
+  aside: {
+    bg: SchemeColors.darkGrey,
+    fontColor: SchemeColors.white,
   },
   input: {
     bg: SchemeColors.darkGrey,

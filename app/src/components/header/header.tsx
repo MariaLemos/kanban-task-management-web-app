@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
 
 const StyledHeader = styled.header`
   padding: 1.33rem;
-  background-color: ${({ theme }) => theme.darkGrey};
+  background-color: ${({ theme }) => theme.aside.bg};
 
   display: grid;
   grid-gap: 1.3rem;
@@ -44,8 +44,8 @@ const StyledHeader = styled.header`
   }
 `;
 const StyledButton = styled(Button)`
-  @media (max-width: 767px) {
-    height: 2.6rem;
+  @media (max-width: 768px) {
+    max-height: 2.6rem;
     padding: 0;
   }
 `;
