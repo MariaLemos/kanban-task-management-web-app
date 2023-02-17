@@ -25,4 +25,5 @@ const StyledThemeToggle = styled.div`
   gap: 24px;
   justify-content: center;
   border-radius: 6px;
+  margin: 1rem;
 `;
