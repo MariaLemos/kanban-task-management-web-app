@@ -16,8 +16,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem("theme", themeName);
     setThemeName(themeName);
   };
-
-  const boards = Data.boards;
+  const localBoards: Board[] = JSON.parse(
+    localStorage.getItem("boards") ?? "[]"
+  );
+  const boards = localBoards.length > 0 ? localBoards : Data.boards;
   return (
     <AppContext.Provider
       value={{

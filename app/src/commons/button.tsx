@@ -1,11 +1,12 @@
 import styled, { css, useTheme } from "styled-components";
 
 export const Button: React.FC<{
-  variant: ButtonType;
+  variant?: ButtonType;
   children: JSX.Element | string;
   size?: "small" | "large";
   className?: string;
-}> = ({ children, size, variant, className }) => {
+  onClick: () => void;
+}> = ({ children, size, variant = "primary", className, onClick }) => {
   const theme = useTheme();
   return (
     <StyledButton
@@ -13,6 +14,7 @@ export const Button: React.FC<{
       variant={variant}
       theme={theme}
       className={className}
+      onClick={onClick}
     >
       {children}
     </StyledButton>

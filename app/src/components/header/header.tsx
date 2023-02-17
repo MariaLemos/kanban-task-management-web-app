@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { ReactComponent as IconAdd } from "../../assets/icon-add-task-mobile.svg";
 import { ReactComponent as LogoMobile } from "../../assets/logo-mobile.svg";
 import { Button } from "../../commons/button";
@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
       {isMobile && <LogoMobile />}
 
       <PageTitle />
-      <StyledButton variant="primary" size="small">
+      <StyledButton variant="primary" size="small" onClick={console.log}>
         <IconAdd />
       </StyledButton>
       <ContextMenu
