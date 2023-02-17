@@ -16,18 +16,7 @@ export const SchemeColors = {
 };
 
 const GlobalStyle = createGlobalStyle`
-//set project colors
-/* --main-purple:#635FC7;
---main-purple-hover:#A8A4FF;
---black:#000112;
---dark-bg:#20212C;
---dark-grey: #2B2C37;
---dark-lines: #3E3F4E;
---medium-grey: #828FA3;
---lines-light: #E4EBFA;
---light-bg:#F4F7FD;
---red:#EA5555;
---red-hover:#FF9898; */
+
 
 //reset
 *{
@@ -39,12 +28,12 @@ const GlobalStyle = createGlobalStyle`
 body{
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
-    color:${SchemeColors.lightBg};
+
 }
 // headers tipografia
 h1,h2,h3,h4{
     font-weight: 700;
-    color:${SchemeColors.black};
+    
     line-height:1.25;
 }
  h1{

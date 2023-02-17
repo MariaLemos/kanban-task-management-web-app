@@ -2,8 +2,8 @@ import styled, { css, useTheme } from "styled-components";
 
 export const Button: React.FC<{
   variant: ButtonType;
-  children: string;
-  size: "small" | "large";
+  children: JSX.Element | string;
+  size?: "small" | "large";
 }> = ({ children, size, variant }) => {
   const theme = useTheme();
   return (
@@ -12,7 +12,7 @@ export const Button: React.FC<{
     </StyledButton>
   );
 };
-const StyledButton = styled.button<{ size: string; variant: ButtonType }>`
+const StyledButton = styled.button<{ size?: string; variant: ButtonType }>`
   padding: 0 25px;
   border: none;
   font-weight: 700;

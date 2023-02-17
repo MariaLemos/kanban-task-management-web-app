@@ -1,10 +1,16 @@
 import { SchemeColors } from "./GlobalStyles";
+import { ReactComponent as LogoLight } from "./assets/logo-light.svg";
+import { ReactComponent as LogoDark } from "./assets/logo-dark.svg";
 
 const lightTheme: Theme = {
+  logo: LogoLight,
   default: {
     bg: SchemeColors.white,
   },
-
+  main: {
+    bg: SchemeColors.lightBg,
+    fontColor: SchemeColors.darkGrey,
+  },
   input: {
     bg: SchemeColors.white,
     fontColor: SchemeColors.black,
@@ -28,6 +34,11 @@ const lightTheme: Theme = {
   },
 };
 const darkTheme: Theme = {
+  logo: LogoDark,
+  main: {
+    bg: SchemeColors.darkBg,
+    fontColor: SchemeColors.white,
+  },
   default: {
     bg: SchemeColors.darkBg,
   },
