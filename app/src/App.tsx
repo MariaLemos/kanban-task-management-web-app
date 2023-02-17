@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
+import { AppProvider } from "./AppProvider";
 import { Button } from "./commons/button";
 import { CheckListItem } from "./commons/checkListItem";
 import { DropDown } from "./commons/dropdown";
@@ -7,22 +7,14 @@ import { Input } from "./commons/input";
 import { Header } from "./components/header/header";
 import { SideBar } from "./components/sidebar/sidebar";
 import GlobalStyle from "./GlobalStyles";
-import { themeMap } from "./Themes";
 
 function App() {
-  const userPrefenceByBrowser = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches
-    ? "dark"
-    : "light";
-  const [theme, setTheme] = useState<"light" | "dark">(userPrefenceByBrowser);
   return (
-    <ThemeProvider theme={themeMap[theme]}>
+    <AppProvider>
+      <GlobalStyle />
       <AppWrapper>
-        <GlobalStyle />
-
         <Header />
-        <SideBar setTheme={setTheme} />
+        <SideBar />
         <Main>
           <Button variant="primary" size="small">
             teste
@@ -42,7 +34,7 @@ function App() {
           <CheckListItem isDone={true} label={"teste"} />
         </Main>
       </AppWrapper>
-    </ThemeProvider>
+    </AppProvider>
   );
 }
 const AppWrapper = styled.div`
