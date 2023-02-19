@@ -1,54 +1,42 @@
+import { RefCallBack } from "react-hook-form";
 import styled from "styled-components";
 
 export const Input: React.FC<
   {
-    label: string;
     className?: string;
     errorMessage?: string;
     onClick?: (event: any) => void;
     onFocus?: (event: any) => void;
     onBlur?: (event: any) => void;
     icon?: JSX.Element;
-  } & Partial<HTMLInputElement>
+    ref?: RefCallBack;
+  } & Partial<React.InputHTMLAttributes<HTMLInputElement>>
 > = ({
-  label,
   errorMessage,
   placeholder,
-  onClick,
   onFocus,
   onBlur,
   className,
   value,
   readOnly,
   icon,
+  ...rest
 }) => {
   return (
-    <StyledLabel className={className} onClick={onClick}>
-      {label}
-      <InputWrapper hasError={Boolean(errorMessage)}>
-        <StyledInput
-          placeholder={placeholder}
-          value={value}
-          readOnly={readOnly}
-          onFocus={onFocus}
-          onBlur={onBlur}
-        />
-        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        {icon && (
-          <Icon onClick={(event) => event.stopPropagation()}>{icon}</Icon>
-        )}
-      </InputWrapper>
-    </StyledLabel>
+    <InputWrapper hasError={Boolean(errorMessage)} className={className}>
+      <StyledInput
+        placeholder={placeholder}
+        value={value}
+        readOnly={readOnly}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        {...rest}
+      />
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      {icon && <Icon onClick={(event) => event.stopPropagation()}>{icon}</Icon>}
+    </InputWrapper>
   );
 };
-
-const StyledLabel = styled.label`
-  display: block;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  color: ${({ theme }) => theme.default.fontColor};
-`;
 
 const InputWrapper = styled.div<{ hasError: boolean }>`
   background: ${({ theme }) => theme.default.bg};
@@ -57,7 +45,7 @@ const InputWrapper = styled.div<{ hasError: boolean }>`
   border-color: ${({ hasError, theme }) =>
     hasError ? theme.red : "rgba(130, 143, 163, 0.25)"};
   border-radius: 4px;
-  margin: 0.5rem 0;
+
   display: flex;
   font-size: 13px;
   line-height: 23px;

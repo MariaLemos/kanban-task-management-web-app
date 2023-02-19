@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import { Input } from "./input";
 import { ReactComponent as ArrowSvg } from "../assets/icon-chevron-down.svg";
+import { InputWithLabel } from "./inputWithLabel";
 export const DropDown: React.FC<
   {
     label: string;
@@ -50,7 +51,7 @@ const StyledDropdown = styled.div`
   font-size: 13px;
   line-height: 23px;
 `;
-const StyledInput = styled(Input)<{ isOpen: boolean }>`
+const StyledInput = styled(InputWithLabel)<{ isOpen: boolean }>`
   transition: 0.5s;
 
   input {

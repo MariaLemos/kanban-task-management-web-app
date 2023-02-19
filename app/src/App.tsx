@@ -42,6 +42,10 @@ const AppWrapper = styled.div`
   aside {
     grid-area: aside;
   }
+  h1,
+  h2 {
+    color: ${({ theme }) => theme.titleColor};
+  }
 `;
 
 const Main = styled.main`

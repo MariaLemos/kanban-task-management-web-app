@@ -5,7 +5,7 @@ export const Button: React.FC<{
   children: JSX.Element | string;
   size?: "small" | "large";
   className?: string;
-  onClick: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }> = ({ children, size, variant = "primary", className, onClick }) => {
   const theme = useTheme();
   return (
@@ -14,13 +14,15 @@ export const Button: React.FC<{
       variant={variant}
       theme={theme}
       className={className}
-      onClick={onClick}
+      onClick={(event) => onClick && onClick(event)}
     >
       {children}
     </StyledButton>
   );
 };
 const StyledButton = styled.button<{ size?: string; variant: ButtonType }>`
+  display: block;
+  width: 100%;
   padding: 0 1.5rem;
   border: none;
   font-weight: 700;
