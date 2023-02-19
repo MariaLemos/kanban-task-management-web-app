@@ -3,7 +3,7 @@ import { ReactComponent as IconAdd } from "../../assets/icon-add-task-mobile.svg
 import { ReactComponent as LogoMobile } from "../../assets/logo-mobile.svg";
 import { Button } from "../../commons/button";
 import useIsMobile from "../../helpers/useIsMobile";
-import { ContextMenuComponent } from "../contextMenu/contextMenu.component";
+import { ContextMenuBoardComponent } from "./contextMenuBoard.component";
 import { PageTitleComponent } from "./pageTitle.component";
 
 export const HeaderComponent: React.FC = () => {
@@ -17,11 +17,7 @@ export const HeaderComponent: React.FC = () => {
       <StyledButton variant="primary" size="small" onClick={console.log}>
         {isMobile ? <IconAdd /> : "+ Add New Task"}
       </StyledButton>
-      <ContextMenuComponent
-        editAction={console.log}
-        contextName="board"
-        deleteAction={() => {}}
-      />
+      <ContextMenuBoardComponent />
     </Header>
   );
 };
