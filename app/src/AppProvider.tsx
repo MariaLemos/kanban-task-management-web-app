@@ -2,7 +2,6 @@ import { ReactNode, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { AppContext } from "./AppContext";
 import { themeMap } from "./Themes";
-import Data from "./data.json";
 import { getPreferredTheme } from "./helpers/getPreferredTheme";
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
@@ -15,11 +14,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   };
   const [showSideBar, setShowSideBar] = useState<boolean>(true);
 
-  const [selectedBoard, setSelectedBoard] = useState<Board>();
   const localBoards: Board[] = JSON.parse(
     localStorage.getItem("boards") ?? "[]"
   );
-  const boardList = localBoards.length > 0 ? localBoards : Data.boards;
+  const boardList = localBoards.length > 0 ? localBoards : [];
+  const [selectedBoard, setSelectedBoard] = useState<Board>(boardList[0]);
 
   return (
     <AppContext.Provider
@@ -27,7 +26,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         theme: { themeName, setThemeName: changeTheme },
         sideBar: {
           showSideBar,
-
           setShowSideBar,
         },
 
