@@ -23,7 +23,7 @@ const OpacityShadow = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 const StyledModal = styled.div`
-  background-color: ${({ theme }) => theme.aside.bg};
+  background-color: ${({ theme }) => theme.default.bg};
   position: absolute;
   z-index: 2;
   top: 6rem;

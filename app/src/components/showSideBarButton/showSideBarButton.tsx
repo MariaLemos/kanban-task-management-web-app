@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { useShowSideBar } from "../../AppContext";
 import useIsMobile from "../../helpers/useIsMobile";
 import { ReactComponent as ShowSideBarIcon } from "../../assets/icon-show-sidebar.svg";

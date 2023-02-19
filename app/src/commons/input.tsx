@@ -47,11 +47,11 @@ const StyledLabel = styled.label`
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  color: ${({ theme }) => theme.input.fontColor};
+  color: ${({ theme }) => theme.default.fontColor};
 `;
 
 const InputWrapper = styled.div<{ hasError: boolean }>`
-  background: ${({ theme }) => theme.input.bg};
+  background: ${({ theme }) => theme.default.bg};
 
   border: 1px solid rgba(130, 143, 163, 0.25);
   border-color: ${({ hasError, theme }) =>
@@ -66,8 +66,8 @@ const InputWrapper = styled.div<{ hasError: boolean }>`
   }
 `;
 const StyledInput = styled.input`
-  background: ${({ theme }) => theme.input.bg};
-  color: ${({ theme }) => theme.input.fontColor};
+  background: ${({ theme }) => theme.default.bg};
+  color: ${({ theme }) => theme.default.fontColor};
   border: none;
   width: 100%;
   padding: 0.5rem 1rem;

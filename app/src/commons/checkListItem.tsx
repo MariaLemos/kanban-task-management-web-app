@@ -32,7 +32,7 @@ const StyledCheckListItem = styled.li`
   font-size: 12px;
   display: flex;
 
-  background-color: ${({ theme }) => theme.default.bg};
+  background-color: ${({ theme }) => theme.main.bg};
   &:hover {
     background-color: ${({ theme }) => theme.mainPurpleWithTransaprency};
   }

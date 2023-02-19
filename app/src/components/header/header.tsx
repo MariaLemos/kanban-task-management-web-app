@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
 
 const StyledHeader = styled.header`
   padding: 1.33rem;
-  background-color: ${({ theme }) => theme.aside.bg};
+  background-color: ${({ theme }) => theme.default.bg};
 
   width: 100%;
   display: grid;

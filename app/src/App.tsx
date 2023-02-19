@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { AppProvider } from "./AppProvider";
-import { Button } from "./commons/button";
 import { CheckListItem } from "./commons/checkListItem";
 import { DropDown } from "./commons/dropdown";
 import { Input } from "./commons/input";
 import { Header } from "./components/header/header";
-import { ShowSideBarButton } from "./components/showSideBarButton/showSideBar";
+import { ShowSideBarButton } from "./components/showSideBarButton/showSideBarButton";
 import { SideBarWrapper } from "./components/sidebar/sidebar.wrapper";
 import GlobalStyle from "./GlobalStyles";
 

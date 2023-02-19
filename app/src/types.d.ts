@@ -1,8 +1,9 @@
 type ButtonType = "primary" | "secondary" | "destructive";
-type ThemedComponents = "main" | "input" | "default" | "input" | "aside";
+type ThemedComponents = "main" | "default";
 type Theme = { [key in ThemedComponents]: ThemedComponentProps } & {
   logo: ReactComponent;
   line: string;
+  titleColor: string;
   buttons: {
     [key in ButtonType]: ThemedComponentProps;
   };

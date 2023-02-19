@@ -10,6 +10,9 @@ export const SideBarWrapper: React.FC = () => {
   const isMobile = useIsMobile();
   const theme = useTheme() as Theme;
   const Logo = theme.logo;
+  if (!showSideBar) {
+    return null;
+  }
 
   if (isMobile) {
     return (
@@ -21,9 +24,6 @@ export const SideBarWrapper: React.FC = () => {
         <SideBar />
       </Modal>
     );
-  }
-  if (!showSideBar) {
-    return null;
   }
 
   return (
@@ -39,7 +39,7 @@ export const SideBarWrapper: React.FC = () => {
 const SideBarContainer = styled.aside`
   max-width: 260px;
   height: 100vh;
-  background-color: ${({ theme }) => theme.aside.bg};
+  background-color: ${({ theme }) => theme.default.bg};
   border-right: 1px solid ${({ theme }) => theme.line};
   padding: 2rem 0;
   display: grid;

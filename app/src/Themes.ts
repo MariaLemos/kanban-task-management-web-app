@@ -5,21 +5,14 @@ import { ReactComponent as LogoDark } from "./assets/logo-dark.svg";
 const lightTheme: Theme = {
   logo: LogoDark,
   line: SchemeColors.lightLines,
+  titleColor: SchemeColors.black,
   default: {
     bg: SchemeColors.white,
-    fontColor: SchemeColors.black,
+    fontColor: SchemeColors.mediumGrey,
   },
   main: {
     bg: SchemeColors.lightBg,
     fontColor: SchemeColors.darkGrey,
-  },
-  aside: {
-    bg: SchemeColors.white,
-    fontColor: SchemeColors.black,
-  },
-  input: {
-    bg: SchemeColors.white,
-    fontColor: SchemeColors.black,
   },
   buttons: {
     primary: {
@@ -42,18 +35,12 @@ const lightTheme: Theme = {
 const darkTheme: Theme = {
   logo: LogoLight,
   line: SchemeColors.darkLines,
+  titleColor: SchemeColors.white,
   main: {
     bg: SchemeColors.darkBg,
     fontColor: SchemeColors.mediumGrey,
   },
   default: {
-    bg: SchemeColors.darkBg,
-  },
-  aside: {
-    bg: SchemeColors.darkGrey,
-    fontColor: SchemeColors.white,
-  },
-  input: {
     bg: SchemeColors.darkGrey,
     fontColor: SchemeColors.white,
   },
