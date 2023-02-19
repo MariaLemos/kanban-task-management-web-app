@@ -15,7 +15,7 @@ export const HeaderComponent: React.FC = () => {
 
       <PageTitleComponent />
       <StyledButton variant="primary" size="small" onClick={console.log}>
-        <IconAdd />
+        {isMobile ? <IconAdd /> : "+ Add New Task"}
       </StyledButton>
       <ContextMenuComponent
         editAction={console.log}
@@ -36,7 +36,7 @@ const Header = styled.header`
   align-items: center;
   grid-template-columns: 2rem 1fr 4rem 1rem;
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 4rem 1rem;
+    grid-template-columns: 1fr auto 1rem;
   }
   @media (min-width: 1000px) {
     padding: 1.5rem;
