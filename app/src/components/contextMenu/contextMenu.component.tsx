@@ -9,12 +9,19 @@ export const ContextMenuComponent: React.FC<{
   editAction: () => void;
   deleteAction: () => void;
   selectedItemName: string;
-}> = ({ contextName, editAction, deleteAction, selectedItemName }) => {
+  className?: string;
+}> = ({
+  contextName,
+  editAction,
+  deleteAction,
+  selectedItemName,
+  className,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const { openModal } = useModal();
 
   return (
-    <ContextMenu>
+    <ContextMenu className={className}>
       <ButtonToggleVisibility
         onClick={() => {
           setIsOpen(!isOpen);

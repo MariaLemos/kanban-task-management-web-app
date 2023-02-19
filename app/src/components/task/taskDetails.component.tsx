@@ -27,8 +27,8 @@ export const TaskDetailsComponent: React.FC<{ task: Task }> = ({ task }) => {
 
   return (
     <TaskDetails>
-      <h2>{title}</h2>{" "}
-      <ContextMenuComponent
+      <h2>{title}</h2>
+      <ContextMenuTask
         contextName={"task"}
         editAction={function (): void {
           throw new Error("Function not implemented.");
@@ -61,6 +61,11 @@ export const TaskDetailsComponent: React.FC<{ task: Task }> = ({ task }) => {
     </TaskDetails>
   );
 };
+const ContextMenuTask = styled(ContextMenuComponent)`
+  position: absolute;
+  right: 2rem;
+`;
+
 const TaskDetails = styled.div`
   padding: 2rem;
   display: flex;
@@ -71,5 +76,8 @@ const TaskDetails = styled.div`
   strong,
   p {
     width: 100%;
+  }
+  h2 {
+    padding-right: 0.5rem;
   }
 `;

@@ -49,7 +49,7 @@ const SideBar = styled.aside`
   border-right: 1px solid ${({ theme }) => theme.line};
   padding: 2rem 0;
   display: grid;
-
+  position: fixed;
   grid-template-rows: min-content 1fr min-content min-content;
   > svg {
     margin: 0 2rem;

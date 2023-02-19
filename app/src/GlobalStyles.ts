@@ -24,10 +24,11 @@ const GlobalStyle = createGlobalStyle`
     padding:0;
     box-sizing:border-box;
     transition:all 0.2s;
-}
-html{
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
+}
+html{
+    
     @media (max-width:768px){
     font-size: 12px;}
     @media (min-width:768px){

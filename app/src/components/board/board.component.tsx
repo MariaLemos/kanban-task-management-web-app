@@ -8,14 +8,12 @@ export const BoardComponent: React.FC<{ selectedBoard: Board }> = ({
   selectedBoard,
 }) => {
   const { openModal } = useModal();
+  const newColumnAction = () =>
+    openModal({}, <BoardFormComponent board={selectedBoard} />);
+
   if (selectedBoard.columns.length === 0) {
     return (
-      <EmptyMessage
-        contextName="column"
-        createAction={() =>
-          openModal({}, <BoardFormComponent board={selectedBoard} />)
-        }
-      >
+      <EmptyMessage contextName="column" createAction={newColumnAction}>
         This board is empty. Create a new column to get started.
       </EmptyMessage>
     );
@@ -25,6 +23,7 @@ export const BoardComponent: React.FC<{ selectedBoard: Board }> = ({
       {selectedBoard.columns.map((column) => (
         <BoardColumnComponent key={column.name} column={column} />
       ))}
+      <NewColumnButton onClick={newColumnAction}>+ New Column</NewColumnButton>
     </Board>
   );
 };
@@ -37,4 +36,14 @@ const Board = styled.div`
 
   min-height: 90vh;
   padding: 1.5rem;
+`;
+const NewColumnButton = styled.button`
+  background: linear-gradient(
+    180deg,
+    rgba(43, 44, 55, 0.25) 0%,
+    rgba(43, 44, 55, 0.125) 100%
+  );
+  border-radius: 6px;
+  font-size: 24px;
+  font-weight: 700;
 `;

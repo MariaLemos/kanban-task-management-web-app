@@ -31,5 +31,7 @@ const StyledModal = styled.div`
   top: 6rem;
   box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
   border-radius: 8px;
-  max-width: calc(100% - 3rem);
+  width: calc(100% - 3rem);
+  max-width: 480px;
+  position: relative;
 `;
