@@ -12,6 +12,8 @@ export type AppContextType = {
   boards: {
     setSelectedBoard: (board: Board) => void;
     addBoard: (board: Board) => void;
+    editBoard: (board: Board) => void;
+    deleteBoard: (board: Board) => void;
     selectedBoard: Board | undefined;
     boardList: Board[];
   };
@@ -25,6 +27,8 @@ const contextDefaultValues: AppContextType = {
 
   boards: {
     addBoard: (board) => {},
+    editBoard: (board) => {},
+    deleteBoard: (board) => {},
     setSelectedBoard: (board) => {},
     selectedBoard: undefined,
     boardList: [],

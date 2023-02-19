@@ -6,8 +6,8 @@ import { ThemeToggleComponent } from "../themeToggle/themeToggle.component";
 import { BoardLinkComponent } from "./boardLink.component";
 
 export const SideBarComponent: React.FC = () => {
-  const { boardList, setSelectedBoard } = useBoards();
-  const { openModal } = useModal();
+  const { boardList, setSelectedBoard, selectedBoard } = useBoards();
+  const { openModal, closeModal } = useModal();
   return (
     <StyledSidebar>
       <BoardsTitle>ALL BOARDS ({boardList.length})</BoardsTitle>
@@ -16,13 +16,20 @@ export const SideBarComponent: React.FC = () => {
           return (
             <BoardLinkComponent
               key={board.name}
-              action={() => setSelectedBoard(board)}
+              action={() => {
+                setSelectedBoard(board);
+                closeModal();
+              }}
+              isActive={selectedBoard === board}
             >
               {board.name}
             </BoardLinkComponent>
           );
         })}
-        <AddBoardLink action={() => openModal({}, <BoardFormComponent />)}>
+        <AddBoardLink
+          action={() => openModal({}, <BoardFormComponent />)}
+          isActive={false}
+        >
           + Create New Board
         </AddBoardLink>
       </ul>
@@ -40,7 +47,7 @@ const BoardsTitle = styled.h4`
   margin: 16px 24px;
 `;
 const StyledSidebar = styled.div`
-  min-width: 260px;
+  width: 260px;
   display: grid;
   grid-template-rows: min-content 1fr min-content;
 `;

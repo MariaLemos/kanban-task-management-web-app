@@ -58,7 +58,7 @@ h4{
 }
 
  p{
-    color: ${SchemeColors.darkGrey};
+   
     &.large{
         font-weight: 500;
         font-size: 13px;

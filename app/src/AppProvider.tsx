@@ -18,10 +18,26 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [boardList, setBoardList] = useState(getLocalBoards());
   const [selectedBoard, setSelectedBoard] = useState<Board>(boardList[0]);
 
-  const addBoard = (board: Board) => {
-    setBoardList([...boardList, board]);
-    updateLocalBoards([...boardList, board]);
-    setSelectedBoard(board);
+  const updateBoardList = (newBoards: Board[]) => {
+    setBoardList(newBoards);
+    updateLocalBoards(newBoards);
+  };
+
+  const deleteBoard = (boardToDelete: Board) => {
+    const filteredBoardList = boardList.filter(
+      (board) => board.name !== boardToDelete.name
+    );
+    updateBoardList(filteredBoardList);
+  };
+  const editBoard = (boardToEdit: Board) => {
+    const actualIndex = boardList.findIndex((board) => board === boardToEdit);
+    boardList[actualIndex] = boardToEdit;
+    updateBoardList(boardList);
+  };
+
+  const addBoard = (newBoard: Board) => {
+    updateBoardList([...boardList, newBoard]);
+    setSelectedBoard(newBoard);
   };
 
   return (
@@ -35,6 +51,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
 
         boards: {
           addBoard,
+          editBoard,
+          deleteBoard,
           boardList,
           selectedBoard,
           setSelectedBoard,

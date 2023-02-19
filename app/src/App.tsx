@@ -35,12 +35,13 @@ const AppWrapper = styled.div`
     grid-template-areas:
       "aside header"
       "aside main";
-  }
-  header {
-    grid-area: header;
-  }
-  aside {
-    grid-area: aside;
+
+    header {
+      grid-area: header;
+    }
+    aside {
+      grid-area: aside;
+    }
   }
   h1,
   h2 {
