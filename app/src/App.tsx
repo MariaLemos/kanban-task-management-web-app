@@ -28,6 +28,8 @@ const AppWrapper = styled.div`
   color: ${({ theme }) => theme.main?.fontColor};
   background-color: ${({ theme }) => theme.main.bg};
   height: 100vh;
+  width: 100%;
+  overflow: hidden;
   @media (min-width: 768px) {
     grid-template-columns: min-content 1fr;
     display: grid;
@@ -51,9 +53,10 @@ const AppWrapper = styled.div`
 
 const Main = styled.main`
   grid-area: main;
-  min-height: 100%;
+  overflow: scroll;
+  height: 100%;
   width: 100%;
-  padding: 1.5rem;
+
   background-color: ${({ theme }) => theme.main.bg};
   color: ${({ theme }) => theme.main.fontColor};
 `;

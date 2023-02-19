@@ -49,7 +49,7 @@ h2{
     font-size: 1.5rem;
 }
 h3{
-    font-size: 1.25rem;
+    font-size: 15px;
     
 }
 h4{

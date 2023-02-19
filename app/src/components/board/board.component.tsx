@@ -33,6 +33,8 @@ const Board = styled.div`
   grid-auto-flow: column;
   grid-auto-columns: 280px;
   gap: 24px;
-  overflow-x: scroll;
+  width: fit-content;
+
   min-height: 90vh;
+  padding: 1.5rem;
 `;

@@ -10,8 +10,8 @@ export const SideBarComponent: React.FC = () => {
   const { openModal, closeModal } = useModal();
   return (
     <StyledSidebar>
-      <BoardsTitle>ALL BOARDS ({boardList.length})</BoardsTitle>
       <ul>
+        <BoardsTitle>ALL BOARDS ({boardList.length})</BoardsTitle>
         {boardList.map((board) => {
           return (
             <BoardLinkComponent
@@ -47,7 +47,8 @@ const BoardsTitle = styled.h4`
   margin: 16px 24px;
 `;
 const StyledSidebar = styled.div`
-  width: 260px;
-  display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;

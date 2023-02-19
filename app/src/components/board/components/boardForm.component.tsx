@@ -6,25 +6,38 @@ import { FieldsArray } from "../../../commons/fieldsArray";
 import { useBoards } from "../../../AppContext";
 import { useModal } from "../../../commons/modal/modal.Provider";
 
-export const BoardFormComponent: React.FC<{ board?: Board }> = ({ board }) => {
+export const BoardFormComponent: React.FC<{
+  board?: Board;
+  index?: number;
+}> = ({ board, index }) => {
   const formMode = board ? "edit" : "add";
+  const { editBoard, addBoard } = useBoards();
+
   const FormLocales = {
-    button: { add: "Create New Board", edit: "Save Changes" },
-    title: { edit: "Edit Board", add: "Add New Board" },
+    add: {
+      button: "Create New Board",
+      title: "Add New Board",
+      action: addBoard,
+    },
+    edit: {
+      button: "Save Changes",
+      title: "Edit Board",
+      action: editBoard,
+    },
   };
 
   const useFormParams = useForm<Board>({ defaultValues: board });
   const { control, handleSubmit } = useFormParams;
-  const { addBoard } = useBoards();
   const { closeModal } = useModal();
+
   return (
     <BoardForm
       onSubmit={handleSubmit((data) => {
-        addBoard(data);
+        FormLocales[formMode].action(data, index ?? -1);
         closeModal();
       })}
     >
-      <FormTitle>{FormLocales.title[formMode]}</FormTitle>
+      <FormTitle>{FormLocales[formMode].title}</FormTitle>
       <InputWithLabel
         label="Name"
         placeholder={"e.g. Web Design"}
@@ -37,7 +50,7 @@ export const BoardFormComponent: React.FC<{ board?: Board }> = ({ board }) => {
         useFormParams={useFormParams}
         contextName={"column"}
       />
-      <Button>{FormLocales.button[formMode]}</Button>
+      <Button>{FormLocales[formMode].button}</Button>
     </BoardForm>
   );
 };

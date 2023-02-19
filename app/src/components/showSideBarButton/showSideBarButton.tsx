@@ -22,7 +22,7 @@ export const ShowSideBarButton: React.FC = () => {
 const ShowButton = styled(Button)`
   background-color: ${({ theme }) => theme.mainPurple};
   border: none;
-
+  width: 3rem;
   border-radius: 0px 100px 100px 0px;
   position: fixed;
   left: 0;

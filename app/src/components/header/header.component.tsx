@@ -30,9 +30,9 @@ const Header = styled.header`
   display: grid;
   grid-gap: 1.3rem;
   align-items: center;
-  grid-template-columns: 2rem 1fr 4rem 1rem;
+  grid-template-columns: 2rem 1fr auto 1rem;
   @media (min-width: 768px) {
-    grid-template-columns: 1fr auto 1rem;
+    grid-template-columns: auto auto 1rem;
   }
   @media (min-width: 1000px) {
     padding: 1.5rem;

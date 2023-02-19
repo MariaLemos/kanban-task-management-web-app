@@ -30,11 +30,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     );
     updateBoardList(filteredBoardList);
   };
-  const editBoard = (boardToEdit: Board) => {
-    const actualIndex = boardList.findIndex(
-      (board) => board.name === boardToEdit.name
-    );
-    boardList[actualIndex] = boardToEdit;
+  const editBoard = (boardToEdit: Board, index: number) => {
+    boardList[index] = boardToEdit;
     updateBoardList(boardList);
   };
 
