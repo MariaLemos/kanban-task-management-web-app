@@ -1,10 +1,10 @@
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { Button } from "../../../commons/button";
-import { Input } from "../../../commons/input";
 import { InputWithLabel } from "../../../commons/inputWithLabel";
-import { ReactComponent as IconDelete } from "../../../assets/icon-cross.svg";
 import { FieldsArray } from "../../../commons/fieldsArray";
+import { useBoards } from "../../../AppContext";
+import { useModal } from "../../../commons/modal/modal.Provider";
 
 export const BoardFormComponent: React.FC<{ board?: Board }> = ({ board }) => {
   const formMode = board ? "edit" : "add";
@@ -13,16 +13,23 @@ export const BoardFormComponent: React.FC<{ board?: Board }> = ({ board }) => {
     title: { edit: "Edit Board", add: "Add New Board" },
   };
 
-  const useFormParams = useForm();
-  const { register, handleSubmit } = useFormParams;
-
+  const useFormParams = useForm<Board>({ defaultValues: board });
+  const { control, handleSubmit } = useFormParams;
+  const { addBoard } = useBoards();
+  const { closeModal } = useModal();
   return (
-    <BoardForm onSubmit={handleSubmit((data) => console.log(data))}>
+    <BoardForm
+      onSubmit={handleSubmit((data) => {
+        addBoard(data);
+        closeModal();
+      })}
+    >
       <FormTitle>{FormLocales.title[formMode]}</FormTitle>
       <InputWithLabel
         label="Name"
         placeholder={"e.g. Web Design"}
-        {...register(`name`)}
+        name="name"
+        control={control}
       />
 
       <FieldsArray

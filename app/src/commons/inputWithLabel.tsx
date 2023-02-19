@@ -1,4 +1,4 @@
-import { RefCallBack } from "react-hook-form";
+import { Control } from "react-hook-form";
 import styled from "styled-components";
 import { Input } from "./input";
 
@@ -9,9 +9,8 @@ export const InputWithLabel: React.FC<
     errorMessage?: string;
     onClick?: (event: any) => void;
     onFocus?: (event: any) => void;
-    onBlur?: (event: any) => void;
     icon?: JSX.Element;
-    ref?: RefCallBack;
+    control: Control<any, any>;
   } & Partial<React.InputHTMLAttributes<HTMLInputElement>>
 > = ({ label, className, onClick, ...rest }) => {
   return (

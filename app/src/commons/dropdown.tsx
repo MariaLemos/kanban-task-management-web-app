@@ -1,15 +1,16 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { Input } from "./input";
 import { ReactComponent as ArrowSvg } from "../assets/icon-chevron-down.svg";
 import { InputWithLabel } from "./inputWithLabel";
+import { Control, FieldValues } from "react-hook-form";
 export const DropDown: React.FC<
   {
     label: string;
     optionNames: string[];
     value?: string;
+    control: Control<FieldValues, any>;
   } & Partial<HTMLSelectElement>
-> = ({ label, optionNames, value }) => {
+> = ({ label, optionNames, value, control }) => {
   const [selectedValue, setSelectedValue] = useState(value ?? "");
   const [showOptions, setShowOptions] = useState(false);
 
@@ -24,6 +25,7 @@ export const DropDown: React.FC<
         }}
         onClick={() => setShowOptions(!showOptions)}
         icon={<ArrowSvg />}
+        control={control}
         readOnly
       />
 

@@ -1,4 +1,4 @@
-import { RefCallBack } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 import styled from "styled-components";
 
 export const Input: React.FC<
@@ -7,31 +7,42 @@ export const Input: React.FC<
     errorMessage?: string;
     onClick?: (event: any) => void;
     onFocus?: (event: any) => void;
-    onBlur?: (event: any) => void;
+    control: Control<any, any>;
     icon?: JSX.Element;
-    ref?: RefCallBack;
   } & Partial<React.InputHTMLAttributes<HTMLInputElement>>
 > = ({
   errorMessage,
   placeholder,
   onFocus,
-  onBlur,
+
   className,
   value,
   readOnly,
   icon,
+  control,
+  name,
   ...rest
 }) => {
   return (
     <InputWrapper hasError={Boolean(errorMessage)} className={className}>
-      <StyledInput
-        placeholder={placeholder}
-        value={value}
-        readOnly={readOnly}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        {...rest}
+      <Controller
+        name={name ?? ""}
+        control={control}
+        render={({ field: { onChange, onBlur, value, ref } }) => (
+          <StyledInput
+            {...rest}
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            readOnly={readOnly}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onChange={onChange}
+            ref={ref}
+          />
+        )}
       />
+
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       {icon && <Icon onClick={(event) => event.stopPropagation()}>{icon}</Icon>}
     </InputWrapper>

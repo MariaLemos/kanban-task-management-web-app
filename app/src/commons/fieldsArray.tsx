@@ -7,11 +7,11 @@ import { StyledLabel } from "./inputWithLabel";
 
 export const FieldsArray: React.FC<{
   name: string;
-  useFormParams: UseFormReturn;
+  useFormParams: UseFormReturn<any>;
   contextName: string;
 }> = ({ name, useFormParams, contextName }) => {
-  const { control, register } = useFormParams;
-  const { fields, append, remove, swap, move } = useFieldArray({
+  const { control } = useFormParams;
+  const { fields, append, remove } = useFieldArray({
     control, // control props comes from useForm (optional: if you are using FormContext)
     name, // unique name for your Field Array
   });
@@ -23,7 +23,8 @@ export const FieldsArray: React.FC<{
         <LineFieldWrapper key={field.id}>
           <Input
             key={field.id} // important to include key with field's id
-            {...register(`columns.${index}.value`)}
+            control={control}
+            name={`columns.${index}.value`}
           />
           <ButtonDelete
             onClick={(
