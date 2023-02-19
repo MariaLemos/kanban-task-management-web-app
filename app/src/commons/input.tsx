@@ -56,7 +56,7 @@ const InputWrapper = styled.div<{ hasError: boolean }>`
   border-color: ${({ hasError, theme }) =>
     hasError ? theme.red : "rgba(130, 143, 163, 0.25)"};
   border-radius: 4px;
-
+  width: 100%;
   display: flex;
   font-size: 13px;
   line-height: 23px;

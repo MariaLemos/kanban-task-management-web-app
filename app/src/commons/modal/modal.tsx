@@ -29,8 +29,7 @@ const StyledModal = styled.div`
   background-color: ${({ theme }) => theme.default.bg};
   color: ${({ theme }) => theme.default.fontColor};
   top: 6rem;
-
   box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
   border-radius: 8px;
-  width: 260px;
+  max-width: calc(100% - 3rem);
 `;

@@ -28,7 +28,7 @@ export const StyledLabel = styled.label`
   line-height: 1.25;
   color: ${({ theme }) => theme.mediumGrey};
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
   gap: 1rem;
 `;

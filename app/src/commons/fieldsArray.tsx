@@ -24,7 +24,7 @@ export const FieldsArray: React.FC<{
           <Input
             key={field.id} // important to include key with field's id
             control={control}
-            name={`columns.${index}.value`}
+            name={`columns.${index}.name`}
           />
           <ButtonDelete
             onClick={(
