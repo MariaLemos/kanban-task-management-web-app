@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Modal: React.FC<{
   children: JSX.Element;
-  onClose: () => void;
-}> = ({ children, onClose }) => {
+  closeModal: () => void;
+}> = ({ children, closeModal }) => {
   return (
-    <OpacityShadow onClick={onClose}>
+    <OpacityShadow onClick={closeModal}>
       <StyledModal onClick={(event) => event.stopPropagation()}>
         {children}
       </StyledModal>

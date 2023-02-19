@@ -3,27 +3,31 @@ import { useShowSideBar } from "../../AppContext";
 import useIsMobile from "../../helpers/useIsMobile";
 import { SideBarComponent } from "./sidebar.component";
 import { ReactComponent as HideSideBarIcon } from "../../assets/icon-hide-sidebar.svg";
-import { Modal } from "../../commons/modal";
+import { useModal } from "../../commons/modal/modal.Provider";
+import { useEffect } from "react";
 
 export const SideBarContainer: React.FC = () => {
   const { showSideBar, setShowSideBar } = useShowSideBar();
+  const { openModal } = useModal();
   const isMobile = useIsMobile();
   const theme = useTheme() as Theme;
   const Logo = theme.logo;
-  if (!showSideBar) {
-    return null;
-  }
 
-  if (isMobile) {
-    return (
-      <Modal
-        onClose={() => {
-          setShowSideBar(false);
-        }}
-      >
+  useEffect(() => {
+    if (isMobile && showSideBar) {
+      openModal(
+        {
+          onCloseModal: () => {
+            setShowSideBar(false);
+          },
+        },
         <SideBarComponent />
-      </Modal>
-    );
+      );
+    }
+  }, [isMobile, showSideBar]);
+
+  if (!showSideBar || isMobile) {
+    return null;
   }
 
   return (
