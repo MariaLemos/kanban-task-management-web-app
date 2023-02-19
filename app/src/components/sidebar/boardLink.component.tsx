@@ -3,11 +3,11 @@ import { ReactComponent as IconBoard } from "../../assets/icon-board.svg";
 
 export const BoardLinkComponent: React.FC<{
   children: string;
-  link: string;
+  action: () => void;
   className?: string;
-}> = ({ children, link, className }) => {
+}> = ({ children, action, className }) => {
   return (
-    <BoardLink role="link" href={link} className={className}>
+    <BoardLink role="link" onClick={action} className={className}>
       <IconBoard />
       <h3 key={children}>{children}</h3>
     </BoardLink>

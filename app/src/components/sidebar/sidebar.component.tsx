@@ -1,23 +1,30 @@
 import styled from "styled-components";
 import { useBoards } from "../../AppContext";
+import { useModal } from "../../commons/modal/modal.Provider";
+import { BoardFormComponent } from "../board/components/boardForm.component";
 import { ThemeToggleComponent } from "../themeToggle/themeToggle.component";
 import { BoardLinkComponent } from "./boardLink.component";
 
 export const SideBarComponent: React.FC = () => {
-  const { boardList } = useBoards();
-
+  const { boardList, setSelectedBoard } = useBoards();
+  const { openModal } = useModal();
   return (
     <StyledSidebar>
       <BoardsTitle>ALL BOARDS ({boardList.length})</BoardsTitle>
       <ul>
         {boardList.map((board) => {
           return (
-            <BoardLinkComponent key={board.name} link={"board.link"}>
+            <BoardLinkComponent
+              key={board.name}
+              action={() => setSelectedBoard(board)}
+            >
               {board.name}
             </BoardLinkComponent>
           );
         })}
-        <AddBoardLink link={""}>+ Create New Board</AddBoardLink>
+        <AddBoardLink action={() => openModal({}, <BoardFormComponent />)}>
+          + Create New Board
+        </AddBoardLink>
       </ul>
       <ThemeToggleComponent />
     </StyledSidebar>
