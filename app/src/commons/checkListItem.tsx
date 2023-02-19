@@ -4,9 +4,9 @@ import IconCheck from "../assets/icon-check.svg";
 
 export const CheckListItem: React.FC<{
   isDone: boolean;
-  label: string;
+  children: string;
   onChange: () => void;
-}> = ({ label, isDone, onChange }) => {
+}> = ({ children, isDone, onChange }) => {
   const [isChecked, setIsChecked] = useState(isDone);
   return (
     <StyledCheckListItem>
@@ -19,7 +19,7 @@ export const CheckListItem: React.FC<{
           onChange();
         }}
       />
-      <Label htmlFor="statusCheck">{label}</Label>
+      <Label htmlFor="statusCheck">{children}</Label>
     </StyledCheckListItem>
   );
 };

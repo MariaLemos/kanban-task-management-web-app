@@ -51,7 +51,7 @@ const AppWrapper = styled.div`
 
 const Main = styled.main`
   grid-area: main;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   padding: 1.5rem;
   background-color: ${({ theme }) => theme.main.bg};

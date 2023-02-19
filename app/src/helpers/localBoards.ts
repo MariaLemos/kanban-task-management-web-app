@@ -1,3 +1,5 @@
+import Data from "../data.json";
+
 export function updateLocalBoards(boardList: Board[]) {
   localStorage.setItem("boards", JSON.stringify(boardList));
 }

@@ -49,10 +49,11 @@ h2{
     font-size: 1.5rem;
 }
 h3{
-    font-size: 1rem;
+    font-size: 1.25rem;
+    
 }
 h4{
-    font-size: 0.75rem;
+    font-size: 1rem;
     letter-spacing: 2.4px;
     color: ${SchemeColors.mediumGrey}
 }

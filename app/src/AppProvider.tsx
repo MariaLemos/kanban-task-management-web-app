@@ -4,6 +4,7 @@ import { AppContext } from "./AppContext";
 import { themeMap } from "./Themes";
 import { getPreferredTheme } from "./helpers/getPreferredTheme";
 import { getLocalBoards, updateLocalBoards } from "./helpers/localBoards";
+import useIsMobile from "./helpers/useIsMobile";
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -13,7 +14,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem("theme", themeName);
     setThemeName(themeName);
   };
-  const [showSideBar, setShowSideBar] = useState<boolean>(true);
+  const [showSideBar, setShowSideBar] = useState<boolean>(!useIsMobile());
 
   const [boardList, setBoardList] = useState(getLocalBoards());
   const [selectedBoard, setSelectedBoard] = useState<Board>(boardList[0]);
@@ -30,7 +31,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     updateBoardList(filteredBoardList);
   };
   const editBoard = (boardToEdit: Board) => {
-    const actualIndex = boardList.findIndex((board) => board === boardToEdit);
+    const actualIndex = boardList.findIndex(
+      (board) => board.name === boardToEdit.name
+    );
     boardList[actualIndex] = boardToEdit;
     updateBoardList(boardList);
   };

@@ -2,22 +2,23 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import { ReactComponent as ArrowSvg } from "../assets/icon-chevron-down.svg";
 import { InputWithLabel } from "./inputWithLabel";
-import { Control, FieldValues } from "react-hook-form";
+import { Control, FieldValues, UseFormReturn } from "react-hook-form";
 export const DropDown: React.FC<
   {
     label: string;
+    name: string;
     optionNames: string[];
-    value?: string;
-    control: Control<FieldValues, any>;
+
+    useFormParams: UseFormReturn<any, any>;
   } & Partial<HTMLSelectElement>
-> = ({ label, optionNames, value, control }) => {
-  const [selectedValue, setSelectedValue] = useState(value ?? "");
+> = ({ label, optionNames, useFormParams, name }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const { setValue, control } = useFormParams;
 
   return (
     <StyledDropdown>
       <StyledInput
-        value={selectedValue}
+        name={name}
         label={label}
         isOpen={showOptions}
         onFocus={() => {
@@ -36,7 +37,7 @@ export const DropDown: React.FC<
               key={optionName}
               onClick={(event) => {
                 event.stopPropagation();
-                setSelectedValue(optionName);
+                setValue("status", optionName);
                 setShowOptions(false);
               }}
             >
@@ -52,6 +53,7 @@ const StyledDropdown = styled.div`
   font-weight: 500;
   font-size: 13px;
   line-height: 23px;
+  width: 100%;
 `;
 const StyledInput = styled(InputWithLabel)<{ isOpen: boolean }>`
   transition: 0.5s;
