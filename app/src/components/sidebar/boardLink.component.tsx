@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { ReactComponent as IconBoard } from "../../assets/icon-board.svg";
 
-export const BoardLink: React.FC<{
+export const BoardLinkComponent: React.FC<{
   children: string;
   link: string;
   className?: string;
 }> = ({ children, link, className }) => {
   return (
-    <StyledBoardLink role="link" href={link} className={className}>
+    <BoardLink role="link" href={link} className={className}>
       <IconBoard />
       <h3 key={children}>{children}</h3>
-    </StyledBoardLink>
+    </BoardLink>
   );
 };
-const StyledBoardLink = styled.a`
+const BoardLink = styled.a`
   display: flex;
   padding: 14px 24px;
   border-radius: 0px 100px 100px 0px;

@@ -4,13 +4,13 @@ import { ReactComponent as ArrowUp } from "../../assets/icon-chevron-up.svg";
 import { ReactComponent as ArrowDown } from "../../assets/icon-chevron-down.svg";
 import useIsMobile from "../../helpers/useIsMobile";
 
-export const PageTitle: React.FC = () => {
+export const PageTitleComponent: React.FC = () => {
   const { showSideBar, setShowSideBar } = useShowSideBar();
   const isMobile = useIsMobile();
 
   const getArrow = () => (showSideBar ? <ArrowUp /> : <ArrowDown />);
   return (
-    <StyledPageTitle
+    <PageTitle
       onClick={() => {
         if (isMobile) {
           setShowSideBar(!showSideBar);
@@ -19,11 +19,11 @@ export const PageTitle: React.FC = () => {
     >
       <h2>Platform Launch</h2>
       {isMobile && getArrow()}
-    </StyledPageTitle>
+    </PageTitle>
   );
 };
 
-const StyledPageTitle = styled.div`
+const PageTitle = styled.div`
   background-color: transparent;
   color: ${({ theme }) => theme.titleColor};
   cursor: pointer;

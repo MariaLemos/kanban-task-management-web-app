@@ -1,11 +1,11 @@
 import styled, { useTheme } from "styled-components";
 import { useShowSideBar } from "../../AppContext";
 import useIsMobile from "../../helpers/useIsMobile";
-import { SideBar } from "./sidebar";
+import { SideBarComponent } from "./sidebar.component";
 import { ReactComponent as HideSideBarIcon } from "../../assets/icon-hide-sidebar.svg";
 import { Modal } from "../../commons/modal";
 
-export const SideBarWrapper: React.FC = () => {
+export const SideBarContainer: React.FC = () => {
   const { showSideBar, setShowSideBar } = useShowSideBar();
   const isMobile = useIsMobile();
   const theme = useTheme() as Theme;
@@ -21,22 +21,22 @@ export const SideBarWrapper: React.FC = () => {
           setShowSideBar(false);
         }}
       >
-        <SideBar />
+        <SideBarComponent />
       </Modal>
     );
   }
 
   return (
-    <SideBarContainer>
+    <SideBar>
       <Logo />
-      <SideBar />
+      <SideBarComponent />
       <HideButton onClick={() => setShowSideBar(false)}>
         <HideSideBarIcon /> Hide Sidebar
       </HideButton>
-    </SideBarContainer>
+    </SideBar>
   );
 };
-const SideBarContainer = styled.aside`
+const SideBar = styled.aside`
   max-width: 260px;
   height: 100vh;
   background-color: ${({ theme }) => theme.default.bg};

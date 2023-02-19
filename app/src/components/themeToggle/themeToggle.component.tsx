@@ -4,21 +4,21 @@ import { ReactComponent as LightThemeIcon } from "../../assets/icon-light-theme.
 import { ReactComponent as DarkThemeIcon } from "../../assets/icon-dark-theme.svg";
 import { Toggle } from "../../commons/toggle";
 
-export const ThemeToggle: React.FC = () => {
+export const ThemeToggleComponent: React.FC = () => {
   const { themeName, setThemeName } = useThemeName();
   return (
-    <StyledThemeToggle>
+    <ThemeToggle>
       <LightThemeIcon />
       <Toggle
         isChecked={themeName === "dark"}
         onChange={(isChecked) => setThemeName(isChecked ? "dark" : "light")}
       />
       <DarkThemeIcon />
-    </StyledThemeToggle>
+    </ThemeToggle>
   );
 };
 
-const StyledThemeToggle = styled.div`
+const ThemeToggle = styled.div`
   background-color: ${({ theme }) => theme.main.bg};
   padding: 14px;
   display: flex;

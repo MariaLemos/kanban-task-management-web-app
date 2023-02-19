@@ -3,30 +3,30 @@ import { ReactComponent as IconAdd } from "../../assets/icon-add-task-mobile.svg
 import { ReactComponent as LogoMobile } from "../../assets/logo-mobile.svg";
 import { Button } from "../../commons/button";
 import useIsMobile from "../../helpers/useIsMobile";
-import { ContextMenu } from "../contextMenu/contextMenu";
-import { PageTitle } from "./pageTitle";
+import { ContextMenuComponent } from "../contextMenu/contextMenu.component";
+import { PageTitleComponent } from "./pageTitle.component";
 
-export const Header: React.FC = () => {
+export const HeaderComponent: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <StyledHeader>
+    <Header>
       {isMobile && <LogoMobile />}
 
-      <PageTitle />
+      <PageTitleComponent />
       <StyledButton variant="primary" size="small" onClick={console.log}>
         <IconAdd />
       </StyledButton>
-      <ContextMenu
+      <ContextMenuComponent
         editAction={console.log}
         contextName="board"
         deleteAction={() => {}}
       />
-    </StyledHeader>
+    </Header>
   );
 };
 
-const StyledHeader = styled.header`
+const Header = styled.header`
   padding: 1.33rem;
   background-color: ${({ theme }) => theme.default.bg};
 

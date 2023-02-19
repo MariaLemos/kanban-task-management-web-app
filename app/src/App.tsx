@@ -3,9 +3,9 @@ import { AppProvider } from "./AppProvider";
 import { CheckListItem } from "./commons/checkListItem";
 import { DropDown } from "./commons/dropdown";
 import { Input } from "./commons/input";
-import { Header } from "./components/header/header";
+import { HeaderComponent } from "./components/header/header.component";
 import { ShowSideBarButton } from "./components/showSideBarButton/showSideBarButton";
-import { SideBarWrapper } from "./components/sidebar/sidebar.wrapper";
+import { SideBarContainer } from "./components/sidebar/sidebar.container";
 import GlobalStyle from "./GlobalStyles";
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
     <AppProvider>
       <GlobalStyle />
       <AppWrapper>
-        <SideBarWrapper />
-        <Header />
+        <SideBarContainer />
+        <HeaderComponent />
         <Main>
           <Input
             label="teste"

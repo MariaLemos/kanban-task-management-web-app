@@ -2,14 +2,14 @@ import { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Ellipses } from "../../assets/icon-vertical-ellipsis.svg";
 
-export const ContextMenu: React.FC<{
+export const ContextMenuComponent: React.FC<{
   contextName: "board" | "task";
   editAction: () => void;
   deleteAction: () => void;
 }> = ({ contextName, editAction, deleteAction }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <StyledMenuSecondary>
+    <ContextMenu>
       <ButtonToggleVisibility
         onClick={() => {
           setIsOpen(!isOpen);
@@ -25,11 +25,11 @@ export const ContextMenu: React.FC<{
           </DeleteOption>
         </Menu>
       )}
-    </StyledMenuSecondary>
+    </ContextMenu>
   );
 };
 
-const StyledMenuSecondary = styled.div`
+const ContextMenu = styled.div`
   position: relative;
   display: flex;
   justify-content: right;

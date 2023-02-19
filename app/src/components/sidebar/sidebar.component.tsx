@@ -1,29 +1,29 @@
 import styled from "styled-components";
 import { useBoards } from "../../AppContext";
-import { ThemeToggle } from "../themeToggle/themeToggle";
-import { BoardLink } from "./boardLink";
+import { ThemeToggleComponent } from "../themeToggle/themeToggle.component";
+import { BoardLinkComponent } from "./boardLink.component";
 
-export const SideBar: React.FC = () => {
-  const boards = useBoards();
+export const SideBarComponent: React.FC = () => {
+  const { boardList } = useBoards();
 
   return (
     <StyledSidebar>
-      <BoardsTitle>ALL BOARDS ({boards.length})</BoardsTitle>
+      <BoardsTitle>ALL BOARDS ({boardList.length})</BoardsTitle>
       <ul>
-        {boards.map((board) => {
+        {boardList.map((board) => {
           return (
-            <BoardLink key={board.name} link={"board.link"}>
+            <BoardLinkComponent key={board.name} link={"board.link"}>
               {board.name}
-            </BoardLink>
+            </BoardLinkComponent>
           );
         })}
         <AddBoardLink link={""}>+ Create New Board</AddBoardLink>
       </ul>
-      <ThemeToggle />
+      <ThemeToggleComponent />
     </StyledSidebar>
   );
 };
-const AddBoardLink = styled(BoardLink)`
+const AddBoardLink = styled(BoardLinkComponent)`
   color: ${({ theme }) => theme.mainPurple};
   > svg > path {
     fill: ${({ theme }) => theme.mainPurple};

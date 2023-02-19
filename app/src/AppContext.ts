@@ -1,29 +1,41 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 
 export type AppContextType = {
-  themeName: ThemeName;
-  showSideBar: boolean;
-  setThemeName: (themeName: ThemeName) => void;
-  setShowSideBar: Dispatch<SetStateAction<boolean>>;
-  boards: Board[];
+  theme: {
+    themeName: ThemeName;
+    setThemeName: (themeName: ThemeName) => void;
+  };
+  sideBar: {
+    showSideBar: boolean;
+    setShowSideBar: Dispatch<SetStateAction<boolean>>;
+  };
+  boards: {
+    setSelectedBoard: (board: Board) => void;
+    selectedBoard: Board | undefined;
+    boardList: Board[];
+  };
 };
 const contextDefaultValues: AppContextType = {
-  themeName: "light",
-  setThemeName: () => null,
-  showSideBar: true,
-  setShowSideBar: () => null,
-  boards: [],
+  theme: { themeName: "light", setThemeName: () => null },
+  sideBar: {
+    showSideBar: true,
+    setShowSideBar: () => null,
+  },
+
+  boards: {
+    setSelectedBoard: (board) => {},
+    selectedBoard: undefined,
+    boardList: [],
+  },
 };
 export const AppContext = createContext<AppContextType>(contextDefaultValues);
 
 export const useThemeName = () => {
-  const { themeName, setThemeName } = useContext(AppContext);
-  return { themeName, setThemeName };
+  return useContext(AppContext).theme;
 };
 
 export const useShowSideBar = () => {
-  const { showSideBar, setShowSideBar } = useContext(AppContext);
-  return { showSideBar, setShowSideBar };
+  return useContext(AppContext).sideBar;
 };
 export const useBoards = () => {
   return useContext(AppContext).boards;
