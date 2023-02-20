@@ -41,16 +41,18 @@ export const SideBarContainer: React.FC = () => {
   );
 };
 const SideBar = styled.aside`
-  min-width: 18rem;
-  max-width: 300px;
-  width: 100%;
+  width: 260px;
+
   height: 100vh;
   background-color: ${({ theme }) => theme.default.bg};
   border-right: 1px solid ${({ theme }) => theme.line};
   padding: 2rem 0;
   display: grid;
-  position: fixed;
+  position: relative;
   grid-template-rows: min-content 1fr min-content min-content;
+  @media (min-width: 1000px) {
+    width: 300px;
+  }
   > svg {
     margin: 0 2rem;
     margin-bottom: 52px;

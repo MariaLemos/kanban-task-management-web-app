@@ -14,7 +14,11 @@ export const Button: React.FC<{
       variant={variant}
       theme={theme}
       className={className}
-      onClick={(event) => onClick && onClick(event)}
+      onClick={(event) => {
+        if (onClick) {
+          onClick(event);
+        }
+      }}
     >
       {children}
     </StyledButton>
