@@ -4,6 +4,7 @@ type Theme = { [key in ThemedComponents]: ThemedComponentProps } & {
   logo: ReactComponent;
   line: string;
   titleColor: string;
+  gradientColor: string;
   buttons: {
     [key in ButtonType]: ThemedComponentProps;
   };

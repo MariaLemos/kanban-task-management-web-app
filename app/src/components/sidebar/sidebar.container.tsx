@@ -24,7 +24,7 @@ export const SideBarContainer: React.FC = () => {
         <SideBarComponent />
       );
     }
-  }, [isMobile, showSideBar]);
+  }, [isMobile, showSideBar, openModal, showSideBar]);
 
   if (!showSideBar || isMobile) {
     return null;

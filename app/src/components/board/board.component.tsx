@@ -40,9 +40,10 @@ const Board = styled.div`
 const NewColumnButton = styled.button`
   background: linear-gradient(
     180deg,
-    rgba(43, 44, 55, 0.25) 0%,
-    rgba(43, 44, 55, 0.125) 100%
+    ${({ theme }) => theme.gradientColor} 0%,
+    ${({ theme }) => theme.gradientColor} 100%
   );
+
   border-radius: 6px;
   font-size: 24px;
   font-weight: 700;

@@ -11,6 +11,7 @@ export const ThemeToggleComponent: React.FC = () => {
       <LightThemeIcon />
       <Toggle
         isChecked={themeName === "dark"}
+        name={"themeToggle"}
         onChange={(isChecked) => setThemeName(isChecked ? "dark" : "light")}
       />
       <DarkThemeIcon />

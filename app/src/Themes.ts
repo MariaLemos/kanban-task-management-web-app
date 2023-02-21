@@ -6,6 +6,7 @@ const lightTheme: Theme = {
   logo: LogoDark,
   line: SchemeColors.lightLines,
   titleColor: SchemeColors.black,
+  gradientColor: SchemeColors.lightGradient,
   default: {
     bg: SchemeColors.white,
     fontColor: SchemeColors.mediumGrey,
@@ -36,6 +37,7 @@ const darkTheme: Theme = {
   logo: LogoLight,
   line: SchemeColors.darkLines,
   titleColor: SchemeColors.white,
+  gradientColor: SchemeColors.lightGradient,
   main: {
     bg: SchemeColors.darkBg,
     fontColor: SchemeColors.mediumGrey,

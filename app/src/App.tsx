@@ -40,6 +40,7 @@ const AppWrapper = styled.div`
 
     header {
       grid-area: header;
+      grid-column: 1/3;
     }
     aside {
       grid-area: aside;

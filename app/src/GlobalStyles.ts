@@ -12,6 +12,8 @@ export const SchemeColors = {
   red: "#EA5555",
   redHover: "#FF9898",
   white: "#fff",
+  lightGradient: "#E9EFFA",
+  darkGradient: "#2B2C3720",
   mainPurpleWithTransaprency: " rgba(99, 95, 199, 0.75)",
 };
 

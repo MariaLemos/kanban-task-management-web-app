@@ -5,12 +5,13 @@ import IconCheck from "../assets/icon-check.svg";
 export const Toggle: React.FC<{
   isChecked: boolean;
   onChange: (isChecked: boolean) => void;
-}> = ({ isChecked: defaultValue, onChange }) => {
+  name: string;
+}> = ({ isChecked: defaultValue, onChange, name }) => {
   const [isChecked, setIsChecked] = useState(defaultValue);
   return (
     <StyledToggle role="switch">
       <Checkbox
-        id="statusCheck"
+        name={name}
         type="checkbox"
         checked={isChecked}
         onChange={() => {
