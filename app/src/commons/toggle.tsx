@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import IconCheck from "../assets/icon-check.svg";
 
 export const Toggle: React.FC<{
   isChecked: boolean;

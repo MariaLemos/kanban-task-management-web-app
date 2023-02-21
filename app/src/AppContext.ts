@@ -12,7 +12,7 @@ export type AppContextType = {
   boards: {
     setSelectedBoard: (board: Board) => void;
     addBoard: (board: Board) => void;
-    editBoard: (board: Board, index: number) => void;
+    editBoard: (board: Board) => void;
     deleteBoard: (board: Board) => void;
     selectedBoard: Board | undefined;
     boardList: Board[];

@@ -33,7 +33,7 @@ export const BoardFormComponent: React.FC<{
   return (
     <BoardForm
       onSubmit={handleSubmit((data) => {
-        FormLocales[formMode].action(data, index ?? -1);
+        FormLocales[formMode].action(data);
         closeModal();
       })}
     >

@@ -20,6 +20,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [selectedBoard, setSelectedBoard] = useState<Board>(boardList[0]);
 
   const updateBoardList = (newBoards: Board[]) => {
+    console.log(newBoards);
     setBoardList(newBoards);
     updateLocalBoards(newBoards);
   };
@@ -30,7 +31,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     );
     updateBoardList(filteredBoardList);
   };
-  const editBoard = (boardToEdit: Board, index: number) => {
+  const editBoard = (boardToEdit: Board) => {
+    const index = boardList.findIndex(
+      (board) => board.name === boardToEdit.name
+    );
     boardList[index] = boardToEdit;
     updateBoardList(boardList);
   };
