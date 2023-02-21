@@ -14,7 +14,7 @@ export const Input: React.FC<
   errorMessage,
   placeholder,
   onFocus,
-
+  onClick,
   className,
   value,
   readOnly,
@@ -36,6 +36,7 @@ export const Input: React.FC<
             value={value}
             readOnly={readOnly}
             onFocus={onFocus}
+            onClick={onClick}
             onBlur={onBlur}
             onChange={onChange}
             ref={ref}

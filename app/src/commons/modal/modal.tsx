@@ -22,7 +22,7 @@ const OpacityShadow = styled.div`
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
 `;
 const StyledModal = styled.div`

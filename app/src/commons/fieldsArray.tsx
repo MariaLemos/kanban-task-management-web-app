@@ -18,7 +18,7 @@ export const FieldsArray: React.FC<{
 
   return (
     <FieldsLabel>
-      Columns
+      {contextName}
       {fields.map((field, index) => (
         <LineFieldWrapper key={field.id}>
           <Input
