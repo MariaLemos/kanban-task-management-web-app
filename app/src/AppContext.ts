@@ -1,4 +1,5 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
+type TaskProps = [task: Task, field: Record<"id", string>];
 
 export type AppContextType = {
   theme: {
@@ -10,12 +11,16 @@ export type AppContextType = {
     setShowSideBar: Dispatch<SetStateAction<boolean>>;
   };
   boards: {
-    setSelectedBoard: (board: Board) => void;
+    setSelectedBoard: (board?: Board) => void;
     addBoard: (board: Board) => void;
     editBoard: (board: Board) => void;
     deleteBoard: (board: Board) => void;
     selectedBoard: Board | undefined;
     boardList: Board[];
+  };
+  tasks: {
+    setSelectedTask: (task: Task, field: Record<"id", string>) => void;
+    selectedTask: [task: Task, field: Record<"id", string>] | undefined;
   };
 };
 const contextDefaultValues: AppContextType = {
@@ -24,7 +29,7 @@ const contextDefaultValues: AppContextType = {
     showSideBar: true,
     setShowSideBar: () => null,
   },
-
+  tasks: { setSelectedTask: (task, field) => {}, selectedTask: undefined },
   boards: {
     addBoard: (board) => {},
     editBoard: (board) => {},

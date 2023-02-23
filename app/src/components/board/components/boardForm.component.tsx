@@ -1,15 +1,15 @@
-import { useForm } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { Button } from "../../../commons/button";
 import { InputWithLabel } from "../../../commons/inputWithLabel";
 import { FieldsArray } from "../../../commons/fieldsArray";
 import { useBoards } from "../../../AppContext";
 import { useModal } from "../../../commons/modal/modal.Provider";
+import { useEffect } from "react";
 
 export const BoardFormComponent: React.FC<{
   board?: Board;
-  index?: number;
-}> = ({ board, index }) => {
+}> = ({ board }) => {
   const formMode = board ? "edit" : "add";
   const { editBoard, addBoard } = useBoards();
 
@@ -26,9 +26,14 @@ export const BoardFormComponent: React.FC<{
     },
   };
 
-  const useFormParams = useForm<Board>({ defaultValues: board });
-  const { control, handleSubmit } = useFormParams;
+  const useFormParams = useFormContext<Board>();
+  const { handleSubmit, reset } = useFormParams;
   const { closeModal } = useModal();
+  useEffect(() => {
+    if (!board) {
+      reset({ name: "", columns: [] });
+    }
+  }, []);
 
   return (
     <BoardForm
@@ -42,14 +47,9 @@ export const BoardFormComponent: React.FC<{
         label="Name"
         placeholder={"e.g. Web Design"}
         name="name"
-        control={control}
       />
 
-      <FieldsArray
-        name="columns"
-        useFormParams={useFormParams}
-        contextName={"column"}
-      />
+      <FieldsArray name="columns" contextName={"column"} nameField="name" />
       <Button>{FormLocales[formMode].button}</Button>
     </BoardForm>
   );

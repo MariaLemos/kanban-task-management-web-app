@@ -80,6 +80,7 @@ const Menu = styled.ul`
 `;
 const MenuOption = styled.li`
   padding: 1rem;
+  cursor: pointer;
 `;
 const DeleteOption = styled(MenuOption)`
   color: ${({ theme }) => theme.red};

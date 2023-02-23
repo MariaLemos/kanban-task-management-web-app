@@ -10,7 +10,6 @@ export const InputWithLabel: React.FC<
     onClick?: (event: any) => void;
     onFocus?: (event: any) => void;
     icon?: JSX.Element;
-    control: Control<any, any>;
   } & Partial<React.InputHTMLAttributes<HTMLInputElement>>
 > = ({ label, className, onClick, ...rest }) => {
   return (

@@ -1,4 +1,4 @@
-import { useFieldArray, UseFormReturn } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { ReactComponent as IconDelete } from "../assets/icon-cross.svg";
 import { Button } from "./button";
@@ -7,15 +7,15 @@ import { StyledLabel } from "./inputWithLabel";
 
 export const FieldsArray: React.FC<{
   name: string;
-  useFormParams: UseFormReturn<any>;
-  contextName: string;
-}> = ({ name, useFormParams, contextName }) => {
-  const { control } = useFormParams;
+  contextName: "subtask" | "column";
+  nameField: string;
+}> = ({ name, contextName, nameField }) => {
+  const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     control, // control props comes from useForm (optional: if you are using FormContext)
     name, // unique name for your Field Array
   });
-
+  console.log(fields);
   return (
     <FieldsLabel>
       {contextName}
@@ -23,9 +23,9 @@ export const FieldsArray: React.FC<{
         <LineFieldWrapper key={field.id}>
           <Input
             key={field.id} // important to include key with field's id
-            control={control}
-            name={`columns.${index}.name`}
+            name={`${name}.${index}.${nameField}`}
           />
+
           <ButtonDelete
             onClick={(
               event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -42,7 +42,10 @@ export const FieldsArray: React.FC<{
         variant="secondary"
         onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
           event.preventDefault();
-          append({});
+          append({
+            [nameField]: "",
+            [contextName === "column" ? "task" : ""]: [],
+          });
         }}
       >
         <> + Add New {contextName}</>

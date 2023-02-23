@@ -1,4 +1,4 @@
-import { Control, Controller } from "react-hook-form";
+import { Control, Controller, useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
 export const Input: React.FC<
@@ -7,7 +7,6 @@ export const Input: React.FC<
     errorMessage?: string;
     onClick?: (event: any) => void;
     onFocus?: (event: any) => void;
-    control: Control<any, any>;
     icon?: JSX.Element;
   } & Partial<React.InputHTMLAttributes<HTMLInputElement>>
 > = ({
@@ -19,10 +18,11 @@ export const Input: React.FC<
   value,
   readOnly,
   icon,
-  control,
+
   name,
   ...rest
 }) => {
+  const { control } = useFormContext();
   return (
     <InputWrapper hasError={Boolean(errorMessage)} className={className}>
       <Controller

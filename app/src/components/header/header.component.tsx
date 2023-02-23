@@ -2,13 +2,16 @@ import styled, { useTheme } from "styled-components";
 import { ReactComponent as IconAdd } from "../../assets/icon-add-task-mobile.svg";
 import { ReactComponent as LogoMobile } from "../../assets/logo-mobile.svg";
 import { Button } from "../../commons/button";
+import { useModal } from "../../commons/modal/modal.Provider";
 import useIsMobile from "../../helpers/useIsMobile";
+import { TaskForm } from "../task/taskForm/taskForm.component";
 import { ContextMenuBoardComponent } from "./contextMenuBoard.component";
 import { PageTitleComponent } from "./pageTitle.component";
 
 export const HeaderComponent: React.FC = () => {
   const isMobile = useIsMobile();
   const theme = useTheme() as Theme;
+  const { openModal } = useModal();
   return (
     <Header>
       {isMobile ? (
@@ -20,7 +23,11 @@ export const HeaderComponent: React.FC = () => {
       )}
 
       <PageTitleComponent />
-      <StyledButton variant="primary" size="small" onClick={console.log}>
+      <StyledButton
+        variant="primary"
+        size="small"
+        onClick={() => openModal({}, <TaskForm />)}
+      >
         {isMobile ? <IconAdd /> : "+ Add New Task"}
       </StyledButton>
       <ContextMenuBoardComponent />

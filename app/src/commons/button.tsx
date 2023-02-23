@@ -33,6 +33,7 @@ const StyledButton = styled.button<{ size?: string; variant: ButtonType }>`
   font-size: 1rem;
   line-height: 2;
   min-width: 4rem;
+  cursor: pointer;
   ${({ theme: { buttons }, variant, size }) => {
     const { bg, fontColor, hover } = buttons[variant];
     return css`

@@ -1,16 +1,26 @@
 import styled from "styled-components";
 import { useModal } from "../../commons/modal/modal.Provider";
-import { TaskDetailsComponent } from "./taskDetails.component";
+import { TaskViewComponent } from "./taskView/taskView.component";
+import { getSubtasksConcludedProportion } from "./tasks.helper";
 
-export const TaskComponent: React.FC<{ task: Task }> = ({ task }) => {
-  const totalOfSubtasks = task.subtasks.length;
-  const subtasksConcluded = task.subtasks.filter(
-    (subtask) => subtask.isCompleted
-  ).length;
+export const TaskComponent: React.FC<{
+  task: Task;
+  field: Record<"id", string>;
+  index: number;
+}> = ({ task, field, index }) => {
+  const [subtasksConcluded, totalOfSubtasks] =
+    getSubtasksConcludedProportion(task);
 
   const { openModal } = useModal();
   return (
-    <Task onClick={() => openModal({}, <TaskDetailsComponent task={task} />)}>
+    <Task
+      onClick={() =>
+        openModal(
+          {},
+          <TaskViewComponent task={task} field={field} index={index} />
+        )
+      }
+    >
       <h3>{task.title} </h3>
       <span>{`${subtasksConcluded} of ${totalOfSubtasks} subtasks`} </span>
     </Task>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RefCallBack } from "react-hook-form";
 import styled from "styled-components";
 import IconCheck from "../assets/icon-check.svg";
 
@@ -6,24 +7,26 @@ export const CheckListItem: React.FC<{
   isDone: boolean;
   children: string;
   onChange: () => void;
-}> = ({ children, isDone, onChange }) => {
-  const [isChecked, setIsChecked] = useState(isDone);
+  onBlur: () => void;
+  refCallBack: RefCallBack;
+  name: string;
+}> = ({ children, isDone, onChange, name, onBlur, refCallBack }) => {
+  console.log(name, isDone);
   return (
     <StyledCheckListItem>
       <Checkbox
-        id="statusCheck"
+        name={name}
+        ref={refCallBack}
         type="checkbox"
-        checked={isChecked}
-        onChange={() => {
-          setIsChecked(!isChecked);
-          onChange();
-        }}
+        checked={isDone}
+        onBlur={onBlur}
+        onChange={onChange}
       />
-      <Label htmlFor="statusCheck">{children}</Label>
+      <Label>{children}</Label>
     </StyledCheckListItem>
   );
 };
-const StyledCheckListItem = styled.li`
+const StyledCheckListItem = styled.label`
   list-style: none;
   margin: 0.5rem 0;
   padding: 12px;
@@ -71,7 +74,7 @@ const Checkbox = styled.input`
     opacity: 0.5;
   }
 `;
-const Label = styled.label`
+const Label = styled.span`
   line-height: 1rem;
   display: flex;
 `;

@@ -7,6 +7,7 @@ import { BoardFormComponent } from "./components/boardForm.component";
 export const BoardContainer: React.FC = () => {
   const { selectedBoard } = useBoards();
   const { openModal } = useModal();
+  console.log(selectedBoard);
   if (!selectedBoard) {
     return (
       <EmptyMessage

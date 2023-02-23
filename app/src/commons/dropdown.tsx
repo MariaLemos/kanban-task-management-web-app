@@ -1,19 +1,18 @@
 import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import styled, { css } from "styled-components";
 import { ReactComponent as ArrowSvg } from "../assets/icon-chevron-down.svg";
 import { InputWithLabel } from "./inputWithLabel";
-import { Control, FieldValues, UseFormReturn } from "react-hook-form";
+
 export const DropDown: React.FC<
   {
     label: string;
     name: string;
     optionNames: string[];
-
-    useFormParams: UseFormReturn<any, any>;
   } & Partial<HTMLSelectElement>
-> = ({ label, optionNames, useFormParams, name }) => {
+> = ({ label, optionNames, name }) => {
   const [showOptions, setShowOptions] = useState(false);
-  const { setValue, control } = useFormParams;
+  const { setValue, control } = useFormContext();
 
   return (
     <StyledDropdown>
@@ -26,7 +25,6 @@ export const DropDown: React.FC<
         }}
         onClick={() => setShowOptions(!showOptions)}
         icon={<ArrowSvg />}
-        control={control}
         readOnly
       />
 
@@ -37,7 +35,7 @@ export const DropDown: React.FC<
               key={optionName}
               onClick={(event) => {
                 event.stopPropagation();
-                setValue("status", optionName);
+                setValue(name, optionName);
                 setShowOptions(false);
               }}
             >
